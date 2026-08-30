@@ -29,28 +29,10 @@ rename_dir
   Rename a directory. (디렉터리 이름 수정)
 
 ls
-  -a  Show all files, including hidden files.
-  -A  Show hidden files, excluding . and ..
-  -l  Show detailed file information.
-  -h  Show file sizes in human-readable format.
-  -R  List subdirectories recursively.
-  -t  Sort by modification time.
-  -r  Reverse the sort order.
-  -S  Sort by file size.
-  -1  Show one file per line.
-  -d  Show directories themselves.
-  -F  Append file type indicators.
-  -i  Show inode numbers.
-  -s  Show allocated block size.
 
 pwd
-  -L  Show the logical path.
-  -P  Show the physical path.
 
 cd
-  -L  Use the logical path.
-  -P  Use the physical path.
-
   .   Current directory.
   ..  Parent directory.
   ~   Home directory.
