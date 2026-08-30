@@ -1,9 +1,8 @@
 #include <stdio.h>
 
-typedef struct {
-    char name[256];
+typedef struct Directory {
+    char *name;
     struct Directory *parent;
-};
 } Directory;
 
 void create_directory(void);
