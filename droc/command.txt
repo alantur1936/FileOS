@@ -33,6 +33,6 @@ ls
 pwd
 
 cd
-  .   Current directory.
-  ..  Parent directory.
-  ~   Home directory.
+  .   Current directory. (현재 디렉터리)
+  ..  Parent directory. (상위 디렉터리)
+  ~   Home directory. (홈 디렉터리)
