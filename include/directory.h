@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 typedef struct {
-    char *name;
+    char name[256];
     struct Directory *parent;
 };
 } Directory;
