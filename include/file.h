@@ -1,8 +1,8 @@
 #include <stdio.h>
 
 typedef struct {
-    char name[256];
-    char content[4096];
+    char *name;
+    char *content;
 } File;
 
 void create_file(void);
