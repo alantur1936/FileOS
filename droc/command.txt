@@ -1,26 +1,56 @@
 create
-  Create a file.
+  Create a file. (파일 생성)
 
 delete
-  Delete a file.
+  Delete a file. (파일 삭제)
 
 write
-  Write content to a file.
+  Write to a file. (파일 쓰기)
 
 read
-  Read and output a file's content.
+  Read a file. (파일 읽기)
 
 rename
-  Rename a file.
+  Rename a file. (파일 이름 수정)
+
+create_dir
+  Create a directory. (디렉터리 생성)
+
+delete_dir
+  Delete a directory. (디렉터리 삭제)
+
+write_dir
+  Write to a directory. (디렉터리 쓰기)
+
+read_dir
+  Read a directory. (디렉터리 읽기)
+
+rename_dir
+  Rename a directory. (디렉터리 이름 수정)
 
 ls
+  -a  Show all files, including hidden files.
+  -A  Show hidden files, excluding . and ..
+  -l  Show detailed file information.
+  -h  Show file sizes in human-readable format.
+  -R  List subdirectories recursively.
+  -t  Sort by modification time.
+  -r  Reverse the sort order.
+  -S  Sort by file size.
+  -1  Show one file per line.
+  -d  Show directories themselves.
+  -F  Append file type indicators.
+  -i  Show inode numbers.
+  -s  Show allocated block size.
 
 pwd
+  -L  Show the logical path.
+  -P  Show the physical path.
 
 cd
+  -L  Use the logical path.
+  -P  Use the physical path.
 
-cd ..
-
-cd .
-
-cd ~
+  .   Current directory.
+  ..  Parent directory.
+  ~   Home directory.
