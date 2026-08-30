@@ -1,26 +1,26 @@
 #include "file.h"
 
-// Create a file. / 파일을 생성한다.
+// Create file. / 파일 생성
 void create_file(void)
 {
 }
 
-// Delete a file. / 파일을 삭제한다.
+// Delete file. / 파일 삭제
 void delete_file(void)
 {
 }
 
-// Write to a file. / 파일에 내용을 쓴다.
+// Write file. / 파일 쓰기
 void write_file(void)
 {
 }
 
-// Read and output a file. / 파일을 읽고 출력한다.
+// Read file. / 파일 읽기
 void read_file(void)
 {
 }
 
-// Rename a file. / 파일 이름을 수정한다.
+// Rename file. / 파일 이름 수정
 void rename_file(void)
 {
 }
