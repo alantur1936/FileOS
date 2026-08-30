@@ -1,0 +1,37 @@
+create
+  Create a file.
+
+delete
+  Delete a file.
+
+write
+  Write content to a file.
+
+read
+  Read and output a file's content.
+
+rename
+  Rename a file.
+
+ls
+  -a
+  -A
+  -l
+  -h
+  -R
+  -t
+  -r
+  -S
+  -1
+  -d
+  -F
+  -i
+  -s
+
+pwd
+  -L
+  -P
+
+cd
+  -L
+  -P
