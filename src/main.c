@@ -1,5 +1,4 @@
 #include "command.h"
-#include <stdbool.h>
 #include <string.h>
 #include <stdlib.h>
 
@@ -13,7 +12,7 @@ int main(void)
     printf("> Command List: enter list\n");
     printf("> Version: 1.00\n");
 
-    while (true) {
+    while (1) {
         printf("FileOS:/home> ");
         scanf("%99s", user_input);
 
