@@ -1,11 +1,12 @@
 #include "command.h"
 #include <stdbool.h>
 #include <string.h>
+#include <stdlib.h>
 
 int main(void)
 {
     char* cwd = "/home/";
-    char* user_input;
+    char* user_input = malloc(100);
 
     printf("FileOS:/home>\n");
     printf("> Exit: enter x\n");
@@ -14,7 +15,7 @@ int main(void)
 
     while (true) {
         printf("FileOS:/home> ");
-        scanf("%s", user_input);
+        scanf("%99s", user_input);
 
         if (strcmp(user_input, "x") == 0) {
             printf("Exit FileOS?(y/n): ");
@@ -28,10 +29,11 @@ int main(void)
                 continue;
             } else {
                 printf("Enter 'y' or 'n'\n");
-                continue;
             }
         }
     }
+
+    free(user_input);
 
     return 0;
 }
