@@ -1,33 +1,35 @@
 create
-  Create a file. (파일 생성)
+    Create a file. (파일 생성)
 
 delete
-  Delete a file. (파일 삭제)
+    Delete a file. (파일 삭제)
 
 write
-  Write to a file. (파일 쓰기)
+    Write to a file. (파일 쓰기)
 
 read
-  Read a file. (파일 읽기)
+    Read a file. (파일 읽기)
 
 rename
-  Rename a file. (파일 이름 수정)
+    Rename a file. (파일 이름 수정)
 
 create_dir
-  Create a directory. (디렉터리 생성)
+    Create a directory. (디렉터리 생성)
 
 delete_dir
-  Delete a directory. (디렉터리 삭제)
+    Delete a directory. (디렉터리 삭제)
 
 write_dir
-  Write to a directory. (디렉터리 쓰기)
+    Write to a directory. (디렉터리 쓰기)
 
 read_dir
-  Read a directory. (디렉터리 읽기)
+    Read a directory. (디렉터리 읽기)
 
 rename_dir
-  Rename a directory. (디렉터리 이름 수정)
+    Rename a directory. (디렉터리 이름 수정)
 
+list
+    List commands. (명령어 목록 출력)
 ls
 
 pwd
