@@ -1,26 +1,26 @@
 #include "directory.h"
 
 // Create directory (디렉터리 생성)
-void create_directory(void)
+void create_dir(void)
 {
 }
 
 // Delete directory (디렉터리 삭제)
-void delete_directory(void)
+void delete_dir(void)
 {
 }
 
 // Write directory (디렉터리 쓰기)
-void write_directory(void)
+void write_dir(void)
 {
 }
 
 // Read directory (디렉터리 읽기)
-void read_directory(void)
+void read_dir(void)
 {
 }
 
 // Rename directory (디렉터리 이름 수정)
-void rename_directory(void)
+void rename_dir(void)
 {
 }
