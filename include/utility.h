@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-void list_directory(void);
-void print_working_directory(void);
-void change_directory(void);
-void list_commands(void);
+void ls_command(void);
+void cd_command(void);
+void pwd_command(void);
+void list_command(void);
