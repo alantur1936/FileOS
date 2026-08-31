@@ -2,9 +2,9 @@
 
 int main(void)
 {
-    printf(">Exit: inpenter x");
-    printf(">Command Dictionary: inpenter command_droc");
-    printf("Version: 1.00");
+    printf(">Exit: enter x\n");
+    printf(">Command List: enter list\n");
+    printf("Version: 1.00\b");
     printf("FileOS:/home>");
     return 0;
 }
