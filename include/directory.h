@@ -7,8 +7,8 @@ typedef struct Directory {
     struct Directory *parent;
 } Directory;
 
-void create_directory(void);
-void delete_directory(void);
-void write_directory(void);
-void read_directory(void);
-void rename_directory(void);
+void create_dir(void);
+void delete_dir(void);
+void write_dir(void);
+void read_dir(void);
+void rename_dir(void);
