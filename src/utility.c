@@ -1,21 +1,22 @@
 #include "utility.h"
 
 // List directory (디렉터리 목록 출력)
-void list_directory(void)
-{
-}
-
-// Print working directory (현재 디렉터리 출력)
-void print_working_directory(void)
+void ls_command(void)
 {
 }
 
 // Change directory (디렉터리 이동)
-void change_directory(void)
+void cd_command(void)
+{
+}
+
+
+// Print working directory (현재 경로 출력)
+void pwd_command(void)
 {
 }
 
 // List commands (명령어 목록 출력)
-void list_commands(void)
+void list_command(void)
 {
 }
