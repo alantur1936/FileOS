@@ -28,8 +28,11 @@ int main(void)
                 continue;
             } else {
                 printf("Enter 'y' or 'n'\n");
+                continue;
             }
         }
+        
+        process_command(user_input, cwd);
     }
 
     free(user_input);
