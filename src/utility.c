@@ -16,7 +16,7 @@ void pwd_command(void)
 {
 }
 
-// List commands (명령어 목록 출력)
+// List command (명령어 목록 출력)
 void list_commands(void)
 {
     FILE *file = fopen("droc/command.txt", "r");
