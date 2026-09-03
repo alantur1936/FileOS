@@ -1,3 +1,60 @@
 {
-    "commands": []
+    "commands": [
+        {
+            "name": "create",
+            "function": "create_file"
+        },
+        {
+            "name": "delete",
+            "function": "delete_file"
+        },
+        {
+            "name": "write",
+            "function": "write_file"
+        },
+        {
+            "name": "read",
+            "function": "read_file"
+        },
+        {
+            "name": "rename",
+            "function": "rename_file"
+        },
+        {
+            "name": "create_dir",
+            "function": "create_dir"
+        },
+        {
+            "name": "delete_dir",
+            "function": "delete_dir"
+        },
+        {
+            "name": "write_dir",
+            "function": "write_dir"
+        },
+        {
+            "name": "read_dir",
+            "function": "read_dir"
+        },
+        {
+            "name": "rename_dir",
+            "function": "rename_dir"
+        },
+        {
+            "name": "ls",
+            "function": "ls_command"
+        },
+        {
+            "name": "cd",
+            "function": "cd_command"
+        },
+        {
+            "name": "pwd",
+            "function": "pwd_command"
+        },
+        {
+            "name": "list",
+            "function": "list_command"
+        }
+    ]
 }
