@@ -4,8 +4,8 @@
 
 int main(void)
 {
-    char* cwd = "/home/";
-    char* user_input = malloc(100);
+    char* cwd = "/home";
+    char user_input[100];
 
     printf("FileOS:/home>\n");
     printf("> Exit: enter x\n");
@@ -13,8 +13,12 @@ int main(void)
     printf("> Version: 1.00\n");
 
     while (1) {
-        printf("FileOS:/home> ");
-        scanf("%99s", user_input);
+        printf("FileOS:%s ", cwd);
+        if (scanf("%99s", user_input) != 1) {
+            printf("Input failed.\n");
+            free(user_input);
+            return 1;
+        }
 
         if (strcmp(user_input, "x") == 0) {
             printf("Exit FileOS?(y/n): ");
