@@ -2,59 +2,87 @@
     "commands": [
         {
             "name": "create",
-            "function": "create_file"
+            "function": "create_file",
+            "min_args": 1,
+            "max_args": 1
         },
         {
             "name": "delete",
-            "function": "delete_file"
+            "function": "delete_file",
+            "min_args": 1,
+            "max_args": 1
         },
         {
             "name": "write",
-            "function": "write_file"
+            "function": "write_file",
+            "min_args": 2,
+            "max_args": 2
         },
         {
             "name": "read",
-            "function": "read_file"
+            "function": "read_file",
+            "min_args": 1,
+            "max_args": 1
         },
         {
             "name": "rename",
-            "function": "rename_file"
+            "function": "rename_file",
+            "min_args": 2,
+            "max_args": 2
         },
         {
             "name": "create_dir",
-            "function": "create_dir"
+            "function": "create_dir",
+            "min_args": 1,
+            "max_args": 1
         },
         {
             "name": "delete_dir",
-            "function": "delete_dir"
+            "function": "delete_dir",
+            "min_args": 1,
+            "max_args": 1
         },
         {
             "name": "write_dir",
-            "function": "write_dir"
+            "function": "write_dir",
+            "min_args": 2,
+            "max_args": 2
         },
         {
             "name": "read_dir",
-            "function": "read_dir"
+            "function": "read_dir",
+            "min_args": 1,
+            "max_args": 1
         },
         {
             "name": "rename_dir",
-            "function": "rename_dir"
+            "function": "rename_dir",
+            "min_args": 2,
+            "max_args": 2
         },
         {
             "name": "ls",
-            "function": "ls_command"
+            "function": "ls_command",
+            "min_args": 0,
+            "max_args": -1
         },
         {
             "name": "cd",
-            "function": "cd_command"
+            "function": "cd_command",
+            "min_args": 1,
+            "max_args": 1
         },
         {
             "name": "pwd",
-            "function": "pwd_command"
+            "function": "pwd_command",
+            "min_args": 0,
+            "max_args": 0
         },
         {
             "name": "list",
-            "function": "list_command"
+            "function": "list_command",
+            "min_args": 0,
+            "max_args": 0
         }
     ]
 }
