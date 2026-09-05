@@ -17,3 +17,6 @@ void process_command(char* user_input, char* cwd) {
     }
  
 }
+
+void find_command() {
+}
