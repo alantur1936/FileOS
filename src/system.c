@@ -2,8 +2,6 @@
 #include "file.h"
 #include "directory.h"
 #include "utility.h"
-#include "cJSON.h"
-
 // Process command (명령어 처리)
 void process_command(char* user_input, char* cwd) {
     char *args[100];
@@ -15,7 +13,7 @@ void process_command(char* user_input, char* cwd) {
         arg_count++;
         args[arg_count] = strtok(NULL, " ");
     }
- 
+
 }
 
 // Find command (명령어 찾기)
