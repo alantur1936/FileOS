@@ -21,6 +21,36 @@ void process_command(char* user_input, char* cwd) {
 void (*find_command(char* command))(void) {
 
     // 명령어 이름을 확인하고 해당 함수 반환
+    if (strcmp(command, "create") == 0)
+        return create_file;
+
+    if (strcmp(command, "delete") == 0)
+        return delete_file;
+
+    if (strcmp(command, "write") == 0)
+        return write_file;
+
+    if (strcmp(command, "read") == 0)
+        return read_file;
+
+    if (strcmp(command, "rename") == 0)
+        return rename_file;
+
+    if (strcmp(command, "create_dir") == 0)
+        return create_dir;
+
+    if (strcmp(command, "delete_dir") == 0)
+        return delete_dir;
+
+    if (strcmp(command, "write_dir") == 0)
+        return write_dir;
+
+    if (strcmp(command, "read_dir") == 0)
+        return read_dir;
+
+    if (strcmp(command, "rename_dir") == 0)
+        return rename_dir;
+
     if (strcmp(command, "ls") == 0)
         return ls_command;
 
