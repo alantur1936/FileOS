@@ -4,7 +4,7 @@
 #include "utility.h"
 
 // Check arguments (인자 검사)
-static int check_args(
+int check_args(
     const char *command,
     int argc,
     int min_args,
