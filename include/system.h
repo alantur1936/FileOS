@@ -2,4 +2,4 @@
 #include <string.h>
 
 void process_command(char* user_input, char* cwd);
-void (char* command);
+void (const char* command);
