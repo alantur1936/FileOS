@@ -15,55 +15,55 @@ void process_command(char* user_input, char* cwd) {
         args[arg_count] = strtok(NULL, " ");
     }
 
+    execute_command(args[0]);
+
 }
 
 // Find command (명령어 찾기)
-void (*find_command(char* command))(void) {
-
-    // 명령어 이름을 확인하고 해당 함수 반환
-    if (strcmp(command, "create") == 0)
-        return create_file;
-
-    if (strcmp(command, "delete") == 0)
-        return delete_file;
-
-    if (strcmp(command, "write") == 0)
-        return write_file;
-
-    if (strcmp(command, "read") == 0)
-        return read_file;
-
-    if (strcmp(command, "rename") == 0)
-        return rename_file;
-
-    if (strcmp(command, "create_dir") == 0)
-        return create_dir;
-
-    if (strcmp(command, "delete_dir") == 0)
-        return delete_dir;
-
-    if (strcmp(command, "write_dir") == 0)
-        return write_dir;
-
-    if (strcmp(command, "read_dir") == 0)
-        return read_dir;
-
-    if (strcmp(command, "rename_dir") == 0)
-        return rename_dir;
-
-    if (strcmp(command, "ls") == 0)
-        return ls_command;
-
-    if (strcmp(command, "cd") == 0)
-        return cd_command;
-
-    if (strcmp(command, "pwd") == 0)
-        return pwd_command;
-
-    if (strcmp(command, "list") == 0)
-        return list_command;
-
-    // 명령어를 찾지 못함
-    printf("Not command\n");
-    return NULL;
+void execute_command(const char *command) {
+    if (strcmp(command, "create") == 0) {
+        create_file();
+    }
+    else if (strcmp(command, "delete") == 0) {
+        delete_file();
+    }
+    else if (strcmp(command, "write") == 0) {
+        write_file();
+    }
+    else if (strcmp(command, "read") == 0) {
+        read_file();
+    }
+    else if (strcmp(command, "rename") == 0) {
+        rename_file();
+    }
+    else if (strcmp(command, "create_dir") == 0) {
+        create_dir();
+    }
+    else if (strcmp(command, "delete_dir") == 0) {
+        delete_dir();
+    }
+    else if (strcmp(command, "write_dir") == 0) {
+        write_dir();
+    }
+    else if (strcmp(command, "read_dir") == 0) {
+        read_dir();
+    }
+    else if (strcmp(command, "rename_dir") == 0) {
+        rename_dir();
+    }
+    else if (strcmp(command, "ls") == 0) {
+        ls_command();
+    }
+    else if (strcmp(command, "cd") == 0) {
+        cd_command();
+    }
+    else if (strcmp(command, "pwd") == 0) {
+        pwd_command();
+    }
+    else if (strcmp(command, "list") == 0) {
+        list_command();
+    }
+    else {
+        printf("Not command\n");
+    }
 }
