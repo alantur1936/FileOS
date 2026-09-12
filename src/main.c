@@ -1,6 +1,5 @@
 #include "system.h"
 #include <string.h>
-#include <stdlib.h>
 
 int main(void)
 {
@@ -16,7 +15,6 @@ int main(void)
         printf("FileOS:%s ", cwd);
         if (scanf("%99s", user_input) != 1) {
             printf("Input failed.\n");
-            free(user_input);
             return 1;
         }
 
@@ -35,11 +33,9 @@ int main(void)
                 continue;
             }
         }
-        
+
         process_command(user_input, cwd);
     }
-
-    free(user_input);
 
     return 0;
 }
