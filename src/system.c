@@ -3,7 +3,8 @@
 #include "directory.h"
 #include "utility.h"
 
-static int validate_arg_count(
+// Check arguments (인자 검사)
+static int check_args(
     const char *command,
     int argc,
     int min_args,
@@ -52,59 +53,59 @@ void execute_command(int argc, char *argv[], char *cwd) {
     (void)cwd;
 
     if (strcmp(command, "create") == 0) {
-        if (!validate_arg_count(command, argc, 1, 1)) return;
+        if (!check_args(command, argc, 1, 1)) return;
         create_file();
     }
     else if (strcmp(command, "delete") == 0) {
-        if (!validate_arg_count(command, argc, 1, 1)) return;
+        if (!check_args(command, argc, 1, 1)) return;
         delete_file();
     }
     else if (strcmp(command, "write") == 0) {
-        if (!validate_arg_count(command, argc, 2, 2)) return;
+        if (!check_args(command, argc, 2, 2)) return;
         write_file();
     }
     else if (strcmp(command, "read") == 0) {
-        if (!validate_arg_count(command, argc, 1, 1)) return;
+        if (!check_args(command, argc, 1, 1)) return;
         read_file();
     }
     else if (strcmp(command, "rename") == 0) {
-        if (!validate_arg_count(command, argc, 2, 2)) return;
+        if (!check_args(command, argc, 2, 2)) return;
         rename_file();
     }
     else if (strcmp(command, "create_dir") == 0) {
-        if (!validate_arg_count(command, argc, 1, 1)) return;
+        if (!check_args(command, argc, 1, 1)) return;
         create_dir();
     }
     else if (strcmp(command, "delete_dir") == 0) {
-        if (!validate_arg_count(command, argc, 1, 1)) return;
+        if (!check_args(command, argc, 1, 1)) return;
         delete_dir();
     }
     else if (strcmp(command, "write_dir") == 0) {
-        if (!validate_arg_count(command, argc, 2, 2)) return;
+        if (!check_args(command, argc, 2, 2)) return;
         write_dir();
     }
     else if (strcmp(command, "read_dir") == 0) {
-        if (!validate_arg_count(command, argc, 1, 1)) return;
+        if (!check_args(command, argc, 1, 1)) return;
         read_dir();
     }
     else if (strcmp(command, "rename_dir") == 0) {
-        if (!validate_arg_count(command, argc, 2, 2)) return;
+        if (!check_args(command, argc, 2, 2)) return;
         rename_dir();
     }
     else if (strcmp(command, "ls") == 0) {
-        if (!validate_arg_count(command, argc, 0, -1)) return;
+        if (!check_args(command, argc, 0, -1)) return;
         ls_command();
     }
     else if (strcmp(command, "cd") == 0) {
-        if (!validate_arg_count(command, argc, 1, 1)) return;
+        if (!check_args(command, argc, 1, 1)) return;
         cd_command();
     }
     else if (strcmp(command, "pwd") == 0) {
-        if (!validate_arg_count(command, argc, 0, 0)) return;
+        if (!check_args(command, argc, 0, 0)) return;
         pwd_command();
     }
     else if (strcmp(command, "list") == 0) {
-        if (!validate_arg_count(command, argc, 0, 0)) return;
+        if (!check_args(command, argc, 0, 0)) return;
         list_command();
     }
     else {
