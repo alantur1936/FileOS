@@ -10,14 +10,13 @@ void cd_command(void)
 {
 }
 
-
 // Print working directory (현재 경로 출력)
 void pwd_command(void)
 {
 }
 
 // List command (명령어 목록 출력)
-void list_commands(void)
+void list_command(void)
 {
     FILE *file = fopen("droc/command.txt", "r");
     int c;
