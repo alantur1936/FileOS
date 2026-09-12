@@ -4,7 +4,7 @@
 #include "utility.h"
 
 // Process command (명령어 처리)
-void process_command(char* user_input, char* cwd) {
+void process_command(char *user_input, char *cwd) {
     char *args[100];
     int arg_count = 0;
 
@@ -15,8 +15,11 @@ void process_command(char* user_input, char* cwd) {
         args[arg_count] = strtok(NULL, " ");
     }
 
-    execute_command(args[0]);
+    if (arg_count == 0) {
+        return;
+    }
 
+    execute_command(args[0]);
 }
 
 // Find command (명령어 찾기)
