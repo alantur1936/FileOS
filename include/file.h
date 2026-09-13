@@ -1,14 +1,12 @@
 #ifndef FILE_H
 #define FILE_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#define FILE_PATH_MAX 256
+#define FILE_CONTENT_MAX 1024
 
 typedef struct {
-    char *name;
-    char *content;
-    char *path;
+    char path[FILE_PATH_MAX];        // Virtual path (예: /home/memo.txt)
+    char content[FILE_CONTENT_MAX];  // File contents (파일 내용)
 } File;
 
 void create_file(char *args[100], char *cwd); // Create file (파일 생성)
