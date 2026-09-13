@@ -1,13 +1,10 @@
 #ifndef DIRECTORY_H
 #define DIRECTORY_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#define DIRECTORY_PATH_MAX 256
 
-typedef struct Directory {
-    char *name;
-    struct Directory *parent;
+typedef struct {
+    char path[DIRECTORY_PATH_MAX];  // Virtual path (예: /home/docs)
 } Directory;
 
 void create_dir(char *args[100], char *cwd); // Create directory (디렉터리 생성)
