@@ -10,7 +10,7 @@ int check_args(
     int min_args,
     int max_args
 ) {
-    int argument_count = argc - 1;
+    int argument_count = argc - 1;  // Exclude command name (명령어 제외)
 
     if (argument_count < min_args) {
         printf("%s: too few arguments (min: %d)\n",
@@ -29,8 +29,8 @@ int check_args(
 
 // Process command (명령어 처리)
 void process_command(char *user_input, char *cwd) {
-    char *args[100];
-    int arg_count = 0;
+    char *args[100];  // Command tokens (명령어 토큰)
+    int arg_count = 0;  // Token count (토큰 개수)
 
     args[arg_count] = strtok(user_input, " ");
 
@@ -48,7 +48,7 @@ void process_command(char *user_input, char *cwd) {
 
 // Execute command (명령어 실행)
 void execute_command(int argc, char *argv[], char *cwd) {
-    const char *command = argv[0];
+    const char *command = argv[0];  // Command name (명령어 이름)
 
     (void)cwd;
 
