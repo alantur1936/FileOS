@@ -1,10 +1,12 @@
 #ifndef DIRECTORY_H
 #define DIRECTORY_H
 
-#define DIRECTORY_PATH_MAX 256
+#define DIRECTORY_NAME_MAX 64
+#define DIRECTORY_PARENT_PATH_MAX 256
 
 typedef struct {
-    char path[DIRECTORY_PATH_MAX];  // Virtual path (예: /home/docs)
+    char name[DIRECTORY_NAME_MAX];                 // Directory name (예: docs)
+    char parent_path[DIRECTORY_PARENT_PATH_MAX];   // Parent path (예: /home)
 } Directory;
 
 void create_dir(char *args[100], char *cwd); // Create directory (디렉터리 생성)
