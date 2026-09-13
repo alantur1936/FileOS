@@ -104,7 +104,7 @@ void execute_command(int argc, char *args[100], char *cwd) {
     }
     else if (strcmp(command, "list") == 0) {
         if (!check_args(command, argc, 0, 0)) return;
-        list_command(args, cwd);
+        list_command();
     }
     else {
         printf("%s: command not found\n", command);
