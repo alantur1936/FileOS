@@ -13,20 +13,31 @@ int main(void)
 
     while (1) {
         printf("FileOS:%s ", cwd);
-        if (scanf("%99s", user_input) != 1) {
+
+        if (fgets(user_input, sizeof(user_input), stdin) == NULL) {
             printf("Input failed.\n");
             return 1;
         }
 
+        user_input[strcspn(user_input, "\n")] = '\0';
+
+        if (user_input[0] == '\0') {
+            continue;
+        }
+
         if (strcmp(user_input, "x") == 0) {
+            char exit_input[10];
+
             printf("Exit FileOS?(y/n): ");
 
-            char exit;
-            scanf(" %c", &exit);
+            if (fgets(exit_input, sizeof(exit_input), stdin) == NULL) {
+                printf("Input failed.\n");
+                return 1;
+            }
 
-            if (exit == 'y') {
+            if (exit_input[0] == 'y') {
                 break;
-            } else if (exit == 'n') {
+            } else if (exit_input[0] == 'n') {
                 continue;
             } else {
                 printf("Enter 'y' or 'n'\n");
