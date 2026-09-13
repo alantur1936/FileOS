@@ -10,10 +10,10 @@ typedef struct {
     char *content;
 } File;
 
-void create_file(void);
-void delete_file(void);
-void write_file(void);
-void read_file(void);
-void rename_file(void);
+void create_file(char *args[100], char *cwd);
+void delete_file(char *args[100], char *cwd);
+void write_file(char *args[100], char *cwd);
+void read_file(char *args[100], char *cwd);
+void rename_file(char *args[100], char *cwd);
 
 #endif
