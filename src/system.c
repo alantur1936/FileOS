@@ -100,7 +100,7 @@ void execute_command(int argc, char *args[100], char *cwd) {
     }
     else if (strcmp(command, "pwd") == 0) {
         if (!check_args(command, argc, 0, 0)) return;
-        pwd_command(args, cwd);
+        pwd_command(cwd);
     }
     else if (strcmp(command, "list") == 0) {
         if (!check_args(command, argc, 0, 0)) return;
