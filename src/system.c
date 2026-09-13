@@ -47,66 +47,64 @@ void process_command(char *user_input, char *cwd) {
 }
 
 // Execute command (명령어 실행)
-void execute_command(int argc, char *argv[], char *cwd) {
-    const char *command = argv[0];  // Command name (명령어 이름)
-
-    (void)cwd;
+void execute_command(int argc, char *args[100], char *cwd) {
+    const char *command = args[0];  // Command name (명령어 이름)
 
     if (strcmp(command, "create") == 0) {
         if (!check_args(command, argc, 1, 1)) return;
-        create_file();
+        create_file(args, cwd);
     }
     else if (strcmp(command, "delete") == 0) {
         if (!check_args(command, argc, 1, 1)) return;
-        delete_file();
+        delete_file(args, cwd);
     }
     else if (strcmp(command, "write") == 0) {
         if (!check_args(command, argc, 2, 2)) return;
-        write_file();
+        write_file(args, cwd);
     }
     else if (strcmp(command, "read") == 0) {
         if (!check_args(command, argc, 1, 1)) return;
-        read_file();
+        read_file(args, cwd);
     }
     else if (strcmp(command, "rename") == 0) {
         if (!check_args(command, argc, 2, 2)) return;
-        rename_file();
+        rename_file(args, cwd);
     }
     else if (strcmp(command, "create_dir") == 0) {
         if (!check_args(command, argc, 1, 1)) return;
-        create_dir();
+        create_dir(args, cwd);
     }
     else if (strcmp(command, "delete_dir") == 0) {
         if (!check_args(command, argc, 1, 1)) return;
-        delete_dir();
+        delete_dir(args, cwd);
     }
     else if (strcmp(command, "write_dir") == 0) {
         if (!check_args(command, argc, 2, 2)) return;
-        write_dir();
+        write_dir(args, cwd);
     }
     else if (strcmp(command, "read_dir") == 0) {
         if (!check_args(command, argc, 1, 1)) return;
-        read_dir();
+        read_dir(args, cwd);
     }
     else if (strcmp(command, "rename_dir") == 0) {
         if (!check_args(command, argc, 2, 2)) return;
-        rename_dir();
+        rename_dir(args, cwd);
     }
     else if (strcmp(command, "ls") == 0) {
         if (!check_args(command, argc, 0, -1)) return;
-        ls_command();
+        ls_command(args, cwd);
     }
     else if (strcmp(command, "cd") == 0) {
         if (!check_args(command, argc, 1, 1)) return;
-        cd_command();
+        cd_command(args, cwd);
     }
     else if (strcmp(command, "pwd") == 0) {
         if (!check_args(command, argc, 0, 0)) return;
-        pwd_command();
+        pwd_command(args, cwd);
     }
     else if (strcmp(command, "list") == 0) {
         if (!check_args(command, argc, 0, 0)) return;
-        list_command();
+        list_command(args, cwd);
     }
     else {
         printf("%s: command not found\n", command);
