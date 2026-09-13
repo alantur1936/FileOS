@@ -4,7 +4,7 @@
 int main(void)
 {
     char* cwd = "/home";      // Current directory (현재 경로)
-    char user_input[100];      // User input (사용자 입력)
+    char user_input[100];
 
     printf("FileOS:/home>\n");
     printf("> Exit: enter x\n");
