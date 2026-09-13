@@ -8,27 +8,55 @@ on:
 jobs:
   build-windows:
     runs-on: windows-latest
-
     steps:
-      - name: Check out source
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up MSYS2
-        uses: msys2/setup-msys2@v2
+      - uses: msys2/setup-msys2@v2
         with:
           msystem: UCRT64
           update: true
           install: mingw-w64-ucrt-x86_64-gcc
 
-      - name: Build executable
+      - name: Build Windows executable
         shell: msys2 {0}
         run: |
           mkdir -p release/droc
           gcc -static -Iinclude src/*.c -o release/fileos.exe
           cp droc/command.txt release/droc/command.txt
 
-      - name: Upload Windows executable
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         with:
           name: FileOS-Windows
+          path: release/
+
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Linux executable
+        run: |
+          mkdir -p release/droc
+          gcc -Iinclude src/*.c -o release/fileos
+          cp droc/command.txt release/droc/command.txt
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: FileOS-Linux
+          path: release/
+
+  build-macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build macOS executable
+        run: |
+          mkdir -p release/droc
+          clang -Iinclude src/*.c -o release/fileos
+          cp droc/command.txt release/droc/command.txt
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: FileOS-macOS
           path: release/
