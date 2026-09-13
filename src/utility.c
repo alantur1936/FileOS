@@ -13,7 +13,7 @@ void cd_command(char *args[100], char *cwd)
 // Print working directory (현재 경로 출력)
 void pwd_command(char *cwd)
 {
-    printf("%s", *cwd);
+    printf("%s\n", cwd);
 }
 
 // List command (명령어 목록 출력)
