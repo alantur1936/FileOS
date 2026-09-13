@@ -8,6 +8,7 @@
 typedef struct {
     char *name;
     char *content;
+    char *path;
 } File;
 
 void create_file(char *args[100], char *cwd); // Create file (파일 생성)
