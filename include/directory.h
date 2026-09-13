@@ -10,10 +10,10 @@ typedef struct Directory {
     struct Directory *parent;
 } Directory;
 
-void create_dir(void);
-void delete_dir(void);
-void write_dir(void);
-void read_dir(void);
-void rename_dir(void);
+void create_dir(char *args[100], char *cwd);
+void delete_dir(char *args[100], char *cwd);
+void write_dir(char *args[100], char *cwd);
+void read_dir(char *args[100], char *cwd);
+void rename_dir(char *args[100], char *cwd);
 
 #endif
