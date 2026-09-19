@@ -1,6 +1,7 @@
 #include "file.h"
 #include "storage.h"
 #include <stdio.h>
+#include <string.h>
 
 // Create file (파일 생성)
 void create_file(char *args[100], char *cwd)
