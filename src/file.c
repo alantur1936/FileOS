@@ -1,55 +1,23 @@
 #include "file.h"
 #include "storage.h"
 #include <stdio.h>
-#include <string.h>
 
 // Create file (파일 생성)
 void create_file(char *args[100], char *cwd)
 {
-    char path[FILE_PATH_MAX];
-    int length;
-
     if (file_count >= MAX_FILES) {
         printf("file: no space\n");
         return;
     }
 
-    if (args[1] == NULL || args[1][0] == '\0' ||
-        strpbrk(args[1], "/\\") != NULL) {
-        printf("file: invalid name\n");
-        return;
-    }
+    File *file = &files[file_count];
 
-    if (strcmp(cwd, "/") == 0) {
-        length = snprintf(path, sizeof(path), "/%s", args[1]);
-    } else {
-        length = snprintf(path, sizeof(path), "%s/%s", cwd, args[1]);
-    }
+    snprintf(file->name, FILE_NAME_MAX, "%s", args[1]);
+    snprintf(file->path, FILE_PATH_MAX, "%s/%s", cwd, args[1]);
+    file->content[0] = '\0';
 
-    if (length < 0 || length >= (int)sizeof(path)) {
-        printf("file: name too long\n");
-        return;
-    }
-
-    for (int i = 0; i < file_count; i++) {
-        if (strcmp(files[i].path, path) == 0) {
-            printf("file: already exists\n");
-            return;
-        }
-    }
-
-    snprintf(files[file_count].name,
-             sizeof(files[file_count].name),
-             "%s",
-             args[1]);
-    snprintf(files[file_count].path,
-             sizeof(files[file_count].path),
-             "%s",
-             path);
-    files[file_count].content[0] = '\0';
     file_count++;
-
-    printf("file created: %s\n", path);
+    printf("file created: %s\n", file->path);
 }
 
 // Delete file (파일 삭제)
