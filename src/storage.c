@@ -1,9 +1,4 @@
 #include "storage.h"
-#include "file.h"
-#include "directory.h"
-
-#define MAX_FILES 100
-#define MAX_DIRECTORIES 100
 
 File files[MAX_FILES];
 int file_count = 0;
