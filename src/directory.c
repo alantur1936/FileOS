@@ -1,4 +1,5 @@
 #include "directory.h"
+#include "storage.h"
 
 // Create directory (디렉터리 생성)
 void create_dir(char *args[100], char *cwd)
