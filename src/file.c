@@ -10,11 +10,13 @@ void create_file(char *args[100], char *cwd)
     char path[FILE_PATH_MAX];
     int copy_number = 0;
 
+    // Check file storage space (파일 저장 공간 확인)
     if (file_count >= MAX_FILES) {
         printf("file: no space\n");
         return;
     }
 
+    // Find an unused file name in the current directory (현재 경로에서 사용되지 않는 이름 찾기)
     while (copy_number < MAX_FILES) {
         int exists = 0;
 
@@ -24,8 +26,10 @@ void create_file(char *args[100], char *cwd)
             snprintf(name, sizeof(name), "%s(%d)", args[1], copy_number);
         }
 
+        // Build virtual file path (가상 파일 경로 생성)
         snprintf(path, sizeof(path), "%s/%s", cwd, name);
 
+        // Check whether the same path already exists (같은 경로의 파일 존재 여부 확인)
         for (int i = 0; i < file_count; i++) {
             if (strcmp(files[i].path, path) == 0) {
                 exists = 1;
@@ -45,6 +49,7 @@ void create_file(char *args[100], char *cwd)
         return;
     }
 
+    // Store file information (파일 정보 저장)
     File *file = &files[file_count];
 
     snprintf(file->name, sizeof(file->name), "%s", name);
