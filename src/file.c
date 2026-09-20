@@ -89,16 +89,18 @@ void write_file(char *args[100], char *cwd)
         return;
     }
 
+    File *file = &files[index];
+
     printf("Content: ");
 
-    if (fgets(files[index].content, sizeof(files[index].content), stdin) == NULL) {
+    if (fgets(file->content, FILE_CONTENT_MAX, stdin) == NULL) {
         printf("file: input failed\n");
         return;
     }
 
-    files[index].content[strcspn(files[index].content, "\n")] = '\0';
+    file->content[strcspn(file->content, "\n")] = '\0';
 
-    printf("file written: %s/%s\n", files[index].path, files[index].name);
+    printf("file written: %s/%s\n", file->path, file->name);
 }
 
 // Read file (파일 읽기)
