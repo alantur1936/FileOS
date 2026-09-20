@@ -87,8 +87,54 @@ void read_file(char *args[100], char *cwd)
 // Rename file (파일 이름 수정)
 void rename_file(char *args[100], char *cwd)
 {
-    if (file_count == 0) {
+    int target_index = -1;
+    char name[FILE_NAME_MAX];
+    int copy_number = 0;
+
+    // Find the file to rename (이름을 바꿀 파일 찾기)
+    for (int i = 0; i < file_count; i++) {
+        if (strcmp(files[i].path, cwd) == 0 &&
+            strcmp(files[i].name, args[1]) == 0) {
+            target_index = i;
+            break;
+        }
+    }
+
+    if (target_index == -1) {
         printf("file: not found\n");
         return;
     }
+
+    // Find an unused new name (사용되지 않는 새 이름 찾기)
+    while (copy_number < MAX_FILES) {
+        int exists = 0;
+
+        if (copy_number == 0) {
+            snprintf(name, sizeof(name), "%s", args[2]);
+        } else {
+            snprintf(name, sizeof(name), "%s(%d)", args[2], copy_number);
+        }
+
+        for (int i = 0; i < file_count; i++) {
+            if (i != target_index &&
+                strcmp(files[i].path, cwd) == 0 &&
+                strcmp(files[i].name, name) == 0) {
+                exists = 1;
+                break;
+            }
+        }
+
+        if (!exists) {
+            break;
+        }
+
+        copy_number++;
+    }
+
+    snprintf(files[target_index].name,
+             sizeof(files[target_index].name),
+             "%s",
+             name);
+
+    printf("file renamed: %s\n", files[target_index].name);
 }
