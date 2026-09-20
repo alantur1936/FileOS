@@ -59,7 +59,7 @@ void execute_command(int argc, char *args[100], char *cwd) {
         delete_file(args, cwd);
     }
     else if (strcmp(command, "write") == 0) {
-        if (!check_args(command, argc, 2, 2)) return;
+        if (!check_args(command, argc, 1, 1)) return;
         write_file(args, cwd);
     }
     else if (strcmp(command, "read") == 0) {
@@ -79,7 +79,7 @@ void execute_command(int argc, char *args[100], char *cwd) {
         delete_dir(args, cwd);
     }
     else if (strcmp(command, "write_dir") == 0) {
-        if (!check_args(command, argc, 2, 2)) return;
+        if (!check_args(command, argc, 1, 1)) return;
         write_dir(args, cwd);
     }
     else if (strcmp(command, "read_dir") == 0) {
