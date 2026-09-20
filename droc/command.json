@@ -43,18 +43,6 @@
             "max_args": 1
         },
         {
-            "name": "write_dir",
-            "function": "write_dir",
-            "min_args": 2,
-            "max_args": 2
-        },
-        {
-            "name": "read_dir",
-            "function": "read_dir",
-            "min_args": 1,
-            "max_args": 1
-        },
-        {
             "name": "rename_dir",
             "function": "rename_dir",
             "min_args": 2,
