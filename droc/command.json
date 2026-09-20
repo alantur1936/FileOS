@@ -15,8 +15,8 @@
         {
             "name": "write",
             "function": "write_file",
-            "min_args": 2,
-            "max_args": 2
+            "min_args": 1,
+            "max_args": 1
         },
         {
             "name": "read",
