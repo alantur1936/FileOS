@@ -18,8 +18,7 @@ static int find_file(const char *cwd, const char *name, int skip_index)
 }
 
 // Add a number to duplicate file names (중복 파일 이름에 번호 붙이기)
-static int make_numbered_name(char *name, const char *base,
-                            const char *cwd, int skip_index)
+static int make_numbered_name(char *name, const char *base, const char *cwd, int skip_index)
 {
     for (int number = 0; number < MAX_FILES; number++) {
         if (number == 0) {
