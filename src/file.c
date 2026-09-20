@@ -91,9 +91,7 @@ void write_file(char *args[100], char *cwd)
 
     printf("Content: ");
 
-    if (fgets(files[index].content,
-              sizeof(files[index].content),
-              stdin) == NULL) {
+    if (fgets(files[index].content, sizeof(files[index].content), stdin) == NULL) {
         printf("file: input failed\n");
         return;
     }
