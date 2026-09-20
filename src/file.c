@@ -82,10 +82,16 @@ void delete_file(char *args[100], char *cwd)
 // Write file (파일 쓰기)
 void write_file(char *args[100], char *cwd)
 {
-    if (find_file(cwd, args[1], -1) == -1) {
+    int index = find_file(cwd, args[1], -1);
+
+    if (index == -1) {
         printf("file: not found\n");
         return;
     }
+    
+    printf("file written: %s/%s\n", files[index].path, files[index].name);
+    fgets(user_input, sizeof(user_input), stdin);
+    
 }
 
 // Read file (파일 읽기)
