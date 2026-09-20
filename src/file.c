@@ -93,14 +93,28 @@ void write_file(char *args[100], char *cwd)
 
     printf("Content: ");
 
-    if (fgets(file->content, FILE_CONTENT_MAX, stdin) == NULL) {
-        printf("file: input failed\n");
+    char content[FILE_CONTENT_MAX];
+
+if (fgets(content, sizeof(content), stdin) == NULL) {
+    printf("file: input failed\n");
+    return;
+}
+
+if (strchr(content, '\n') == NULL) {
+    int ch = getchar();
+
+    if (ch != '\n' && ch != EOF) {
+        while ((ch = getchar()) != '\n' && ch != EOF) {
+        }
+
+        printf("file: content too long\n");
         return;
     }
+}
 
-    file->content[strcspn(file->content, "\n")] = '\0';
+content[strcspn(content, "\n")] = '\0';
 
-    printf("file written: %s/%s\n", file->path, file->name);
+snprintf(file->content, sizeof(file->content), "%s", content);
 }
 
 // Read file (파일 읽기)
