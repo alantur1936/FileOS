@@ -79,13 +79,16 @@ void delete_file(char *args[100], char *cwd)
         return;
     }
 
+    printf("file deleted: %s/%s\n",
+           files[index].path,
+           files[index].name);
+
     // Move later files forward to fill the deleted slot (뒤 파일을 앞으로 당겨 빈자리 채우기)
     for (int i = index; i < file_count - 1; i++) {
         files[i] = files[i + 1];
     }
 
     file_count--;
-    printf("file deleted: %s\n", args[1]);
 }
 
 // Write file (파일 쓰기)
@@ -126,6 +129,8 @@ void write_file(char *args[100], char *cwd)
     // Remove the newline and save the content (줄바꿈 제거 후 파일 내용 저장)
     content[strcspn(content, "\n")] = '\0';
     snprintf(file->content, sizeof(file->content), "%s", content);
+
+    printf("file written: %s/%s\n", file->path, file->name);
 }
 
 // Read file (파일 읽기)
@@ -165,5 +170,7 @@ void rename_file(char *args[100], char *cwd)
 
     // Replace only the file name; its path stays the same (경로는 유지하고 이름만 변경)
     snprintf(files[index].name, sizeof(files[index].name), "%s", name);
-    printf("file renamed: %s\n", files[index].name);
+    printf("file renamed: %s/%s\n",
+           files[index].path,
+           files[index].name);
 }
