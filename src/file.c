@@ -82,7 +82,7 @@ void delete_file(char *args[100], char *cwd)
 // Write file (파일 쓰기)
 void write_file(char *args[100], char *cwd)
 {
-    if (file_count == 0) {
+    if (find_file(cwd, args[1], -1) == -1) {
         printf("file: not found\n");
         return;
     }
@@ -91,7 +91,7 @@ void write_file(char *args[100], char *cwd)
 // Read file (파일 읽기)
 void read_file(char *args[100], char *cwd)
 {
-    if (file_count == 0) {
+    if (find_file(cwd, args[1], -1) == -1) {
         printf("file: not found\n");
         return;
     }
