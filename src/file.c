@@ -63,10 +63,20 @@ void create_file(char *args[100], char *cwd)
 // Delete file (파일 삭제)
 void delete_file(char *args[100], char *cwd)
 {
-    if (file_count == 0) {
+    int index = find_file(cwd, args[1], -1);
+
+    if (index == -1) {
         printf("file: not found\n");
         return;
     }
+
+    for (int i = index; i < file_count - 1; i++) {
+        files[i] = files[i + 1];
+    }
+
+    file_count--;
+
+    printf("file deleted: %s\n", args[1]);
 }
 
 // Write file (파일 쓰기)
