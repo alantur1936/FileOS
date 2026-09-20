@@ -17,8 +17,8 @@ static int find_file(const char *cwd, const char *name, int skip_index)
     return -1;
 }
 
-// Make an unused file name (사용되지 않는 파일 이름 만들기)
-static int make_unique_name(char *name, const char *base,
+// Add a number to duplicate file names (중복 파일 이름에 번호 붙이기)
+static int make_numbered_name(char *name, const char *base,
                             const char *cwd, int skip_index)
 {
     for (int number = 0; number < MAX_FILES; number++) {
@@ -46,7 +46,7 @@ void create_file(char *args[100], char *cwd)
         return;
     }
 
-    if (!make_unique_name(name, args[1], cwd, -1)) {
+    if (!make_numbered_name(name, args[1], cwd, -1)) {
         printf("file: no space\n");
         return;
     }
@@ -99,7 +99,7 @@ void rename_file(char *args[100], char *cwd)
         return;
     }
 
-    if (!make_unique_name(name, args[2], cwd, index)) {
+    if (!make_numbered_name(name, args[2], cwd, index)) {
         printf("file: no space\n");
         return;
     }
