@@ -100,9 +100,7 @@ void write_file(char *args[100], char *cwd)
 
     files[index].content[strcspn(files[index].content, "\n")] = '\0';
 
-    printf("file written: %s/%s\n",
-           files[index].path,
-           files[index].name);
+    printf("file written: %s/%s\n", files[index].path, files[index].name);
 }
 
 // Read file (파일 읽기)
