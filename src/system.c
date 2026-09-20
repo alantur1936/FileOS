@@ -78,14 +78,6 @@ void execute_command(int argc, char *args[100], char *cwd) {
         if (!check_args(command, argc, 1, 1)) return;
         delete_dir(args, cwd);
     }
-    else if (strcmp(command, "write_dir") == 0) {
-        if (!check_args(command, argc, 1, 1)) return;
-        write_dir(args, cwd);
-    }
-    else if (strcmp(command, "read_dir") == 0) {
-        if (!check_args(command, argc, 1, 1)) return;
-        read_dir(args, cwd);
-    }
     else if (strcmp(command, "rename_dir") == 0) {
         if (!check_args(command, argc, 2, 2)) return;
         rename_dir(args, cwd);
