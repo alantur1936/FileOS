@@ -120,10 +120,16 @@ snprintf(file->content, sizeof(file->content), "%s", content);
 // Read file (파일 읽기)
 void read_file(char *args[100], char *cwd)
 {
-    if (find_file(cwd, args[1], -1) == -1) {
+    int index = find_file(cwd, args[1], -1);
+
+    if (index == -1) {
         printf("file: not found\n");
         return;
     }
+
+    File *file = &files[index];
+
+    printf("%s\n", file->content);
 }
 
 // Rename file (파일 이름 수정)
