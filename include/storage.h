@@ -4,8 +4,8 @@
 #include "file.h"
 #include "directory.h"
 
-#define MAX_FILES 100
-#define MAX_DIRECTORIES 100
+#define MAX_FILES 100       // Maximum number of files (파일 최대 개수)
+#define MAX_DIRECTORIES 100 // Maximum number of directories (디렉터리 최대 개수)
 
 extern File files[MAX_FILES];              // File storage (파일 저장 공간)
 extern int file_count;                     // Number of stored files (저장된 파일 수)
