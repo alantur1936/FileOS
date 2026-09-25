@@ -19,8 +19,19 @@ void list_command(void)
     FILE *file = fopen("droc/command.txt", "r");
     int c;
 
+    // Stop if the guide file cannot be opened. (안내 파일을 열 수 없으면 중단)
+    if (file == NULL) {
+        printf("list: command guide not found\n");
+        return;
+    }
+
     while ((c = fgetc(file)) != EOF)
         putchar(c);
+
+    // Report a read failure separately from normal EOF. (정상 파일 끝과 읽기 오류 구분)
+    if (ferror(file)) {
+        printf("list: failed to read command guide\n");
+    }
 
     fclose(file);
 }
