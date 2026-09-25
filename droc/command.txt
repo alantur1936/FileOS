@@ -1,35 +1,47 @@
-create
+create <name>
     Create a file. (파일 생성)
 
-delete
+delete <name>
     Delete a file. (파일 삭제)
 
-write
+write <name>
     Write to a file. (파일 쓰기)
 
-read
+read <name>
     Read a file. (파일 읽기)
 
-rename
-    Rename a file. (파일 이름 수정)
+rename <old_name> <new_name>
+    Rename a file. (파일 이름 변경)
 
-create_dir
+create_dir <name>
     Create a directory. (디렉터리 생성)
 
-delete_dir
+delete_dir <name>
     Delete a directory. (디렉터리 삭제)
 
-rename_dir
-    Rename a directory. (디렉터리 이름 수정)
+rename_dir <old_name> <new_name>
+    Rename a directory. (디렉터리 이름 변경)
+
+ls
+    List files and directories. (파일과 디렉터리 목록 출력)
+
+cd <directory>
+    Move to a child directory. (하위 디렉터리로 이동)
+
+cd .
+    Stay in the current directory. (현재 디렉터리 유지)
+
+cd ..
+    Move to the parent directory. (상위 디렉터리로 이동)
+
+cd ~
+    Move to /home. (/home으로 이동)
+
+cd /
+    Move to the root directory. (루트 디렉터리로 이동)
+
+pwd
+    Print the current directory path. (현재 디렉터리 경로 출력)
 
 list
     List commands. (명령어 목록 출력)
-ls
-
-pwd
-
-cd .
-
-cd ..
-
-cd ~
