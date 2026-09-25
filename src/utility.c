@@ -68,15 +68,20 @@ void cd_command(char *args[100], char *cwd)
     for (int i = 0; i < directory_count; i++) {
         if (strcmp(directories[i].parent_path, cwd) == 0 &&
             strcmp(directories[i].name, target) == 0) {
+            char path[FILE_PATH_MAX];
+
             // Prevent a child path longer than the current-path buffer. (현재 경로 저장 공간보다 긴 하위 경로 방지)
             if (strcmp(cwd, "/") == 0) {
-                if (snprintf(cwd, FILE_PATH_MAX, "/%s", target) >= FILE_PATH_MAX) {
+                if (snprintf(path, sizeof(path), "/%s", target) >= (int)sizeof(path)) {
                     printf("cd: path too long\n");
+                    return;
                 }
-            } else if (snprintf(cwd, FILE_PATH_MAX, "%s/%s", cwd, target) >= FILE_PATH_MAX) {
+            } else if (snprintf(path, sizeof(path), "%s/%s", cwd, target) >= (int)sizeof(path)) {
                 printf("cd: path too long\n");
+                return;
             }
 
+            snprintf(cwd, FILE_PATH_MAX, "%s", path);
             return;
         }
     }
