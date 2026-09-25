@@ -3,8 +3,8 @@
 
 int main(void)
 {
-    char cwd[256] = "/home";
-    char user_input[100];
+    char cwd[256] = "/home"; // Maximum path length is 256. (경로 최대 길이는 256)
+    char user_input[100];    // Maximum command length is 99 characters. (명령어 최대 길이는 99자)
 
     printf("FileOS:/home>\n");
     printf("> Exit: enter x\n");
@@ -15,6 +15,7 @@ int main(void)
     while (1) {
         printf("FileOS:%s ", cwd);
 
+        // Handle end-of-input or a read error. (입력 종료 또는 읽기 오류 처리)
         if (fgets(user_input, sizeof(user_input), stdin) == NULL) {
             printf("Input failed.\n");
             return 1;
@@ -28,10 +29,11 @@ int main(void)
         }
 
         if (strcmp(user_input, "x") == 0) {
-            char exit_input[10];
+            char exit_input[10]; // Enough for a short exit reply. (짧은 종료 응답용 공간)
 
             printf("Exit FileOS?(y/n): ");
 
+            // Handle end-of-input or a read error. (입력 종료 또는 읽기 오류 처리)
             if (fgets(exit_input, sizeof(exit_input), stdin) == NULL) {
                 printf("Input failed.\n");
                 return 1;
