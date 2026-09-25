@@ -28,9 +28,6 @@ ls
 cd <directory>
     Move to a child directory. (하위 디렉터리로 이동)
 
-cd .
-    Stay in the current directory. (현재 디렉터리 유지)
-
 cd ..
     Move to the parent directory. (상위 디렉터리로 이동)
 
