@@ -86,7 +86,7 @@ void execute_command(int argc, char *args[100], char *cwd) {
     }
     else if (strcmp(command, "ls") == 0) {
         if (!check_args(command, argc, 0, -1)) return;
-        cd_command(args, cwd);
+        ls_command(args, cwd);
     }
     else if (strcmp(command, "cd") == 0) {
         if (!check_args(command, argc, 1, 1)) return;
