@@ -3,7 +3,7 @@
 
 int main(void)
 {
-    char cwd[256] = "/home";  // Current directory (현재 경로)
+    char cwd[256] = "/home";
     char user_input[100];
 
     printf("FileOS:/home>\n");
