@@ -27,9 +27,56 @@ void ls_command(char *args[100], char *cwd)
 
 void cd_command(char *args[100], char *cwd)
 {
+    const char *target = args[1];
+
+    // "." keeps the current path unchanged. ("."은 현재 경로 유지)
+    if (strcmp(target, ".") == 0) {
+        return;
+    }
+
+    // "~" returns to the home directory. ("~"는 홈 디렉터리로 이동)
+    if (strcmp(target, "~") == 0) {
+        snprintf(cwd, FILE_PATH_MAX, "%s", "/home");
+        return;
+    }
+
+    // "/" moves to the root directory. ("/"는 루트 디렉터리로 이동)
+    if (strcmp(target, "/") == 0) {
+        snprintf(cwd, FILE_PATH_MAX, "%s", "/");
+        return;
+    }
+
+    // ".." removes the last directory name. (".."은 마지막 디렉터리 이름 제거)
+    if (strcmp(target, "..") == 0) {
+        char *last_slash;
+
+        if (strcmp(cwd, "/") == 0) {
+            return;
+        }
+
+        last_slash = strrchr(cwd, '/');
+
+        if (last_slash == cwd) {
+            cwd[1] = '\0';
+        } else {
+            *last_slash = '\0';
+        }
+
+        return;
+    }
+
     for (int i = 0; i < directory_count; i++) {
         if (strcmp(directories[i].parent_path, cwd) == 0 &&
-            strcmp(directories[i].name, args[1]) == 0) {
+            strcmp(directories[i].name, target) == 0) {
+            // Prevent a child path longer than the current-path buffer. (현재 경로 저장 공간보다 긴 하위 경로 방지)
+            if (strcmp(cwd, "/") == 0) {
+                if (snprintf(cwd, FILE_PATH_MAX, "/%s", target) >= FILE_PATH_MAX) {
+                    printf("cd: path too long\n");
+                }
+            } else if (snprintf(cwd, FILE_PATH_MAX, "%s/%s", cwd, target) >= FILE_PATH_MAX) {
+                printf("cd: path too long\n");
+            }
+
             return;
         }
     }
