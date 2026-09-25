@@ -6,9 +6,9 @@
 #define FILE_CONTENT_MAX 1024
 
 typedef struct {
-    char name[FILE_NAME_MAX];
-    char path[FILE_PATH_MAX];
-    char content[FILE_CONTENT_MAX];
+    char name[FILE_NAME_MAX];       // File name (파일 이름)
+    char path[FILE_PATH_MAX];       // Containing directory (파일이 있는 디렉터리)
+    char content[FILE_CONTENT_MAX]; // Stored text (저장된 내용)
 } File;
 
 void create_file(char *args[100], char *cwd);
