@@ -1,6 +1,7 @@
 #include "system.h"
 #include "file.h"
 #include "directory.h"
+#include "storage.h"
 #include "utility.h"
 
 // Validate the number of arguments after the command. (명령어 뒤 인자 개수 검사)
@@ -51,18 +52,22 @@ void process_command(char *user_input, char *cwd) {
 // Route a command to its feature function. (명령어에 맞는 기능 함수 호출)
 void execute_command(int argc, char *args[100], char *cwd) {
     const char *command = args[0];
+    int should_save = 0; // Save only after a data-changing command. (데이터 변경 명령어 뒤에만 저장)
 
     if (strcmp(command, "create") == 0) {
         if (!check_args(command, argc, 1, 1)) return;
         create_file(args, cwd);
+        should_save = 1;
     }
     else if (strcmp(command, "delete") == 0) {
         if (!check_args(command, argc, 1, 1)) return;
         delete_file(args, cwd);
+        should_save = 1;
     }
     else if (strcmp(command, "write") == 0) {
         if (!check_args(command, argc, 1, 1)) return;
         write_file(args, cwd);
+        should_save = 1;
     }
     else if (strcmp(command, "read") == 0) {
         if (!check_args(command, argc, 1, 1)) return;
@@ -71,18 +76,22 @@ void execute_command(int argc, char *args[100], char *cwd) {
     else if (strcmp(command, "rename") == 0) {
         if (!check_args(command, argc, 2, 2)) return;
         rename_file(args, cwd);
+        should_save = 1;
     }
     else if (strcmp(command, "create_dir") == 0) {
         if (!check_args(command, argc, 1, 1)) return;
         create_dir(args, cwd);
+        should_save = 1;
     }
     else if (strcmp(command, "delete_dir") == 0) {
         if (!check_args(command, argc, 1, 1)) return;
         delete_dir(args, cwd);
+        should_save = 1;
     }
     else if (strcmp(command, "rename_dir") == 0) {
         if (!check_args(command, argc, 2, 2)) return;
         rename_dir(args, cwd);
+        should_save = 1;
     }
     else if (strcmp(command, "ls") == 0) {
         if (!check_args(command, argc, 0, -1)) return;
@@ -102,5 +111,9 @@ void execute_command(int argc, char *args[100], char *cwd) {
     }
     else {
         printf("%s: command not found\n", command);
+    }
+
+    if (should_save) {
+        save_filesystem();
     }
 }
