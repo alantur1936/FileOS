@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 
+// Find a file by its directory and name. (경로와 이름으로 파일 찾기)
 static int find_file(const char *cwd, const char *name, int skip_index)
 {
     for (int i = 0; i < file_count; i++) {
@@ -16,6 +17,7 @@ static int find_file(const char *cwd, const char *name, int skip_index)
     return -1;
 }
 
+// Add (1), (2), ... when a name already exists. (이름이 겹치면 번호 붙이기)
 static int make_numbered_name(char *name, const char *base,
                               const char *cwd, int skip_index)
 {
@@ -48,6 +50,7 @@ void create_file(char *args[100], char *cwd)
         return;
     }
 
+    // Use the next empty storage slot. (다음 빈 저장 공간 사용)
     File *file = &files[file_count];
 
     snprintf(file->name, sizeof(file->name), "%s", name);
@@ -71,7 +74,7 @@ void delete_file(char *args[100], char *cwd)
            files[index].path,
            files[index].name);
 
-    // Fill the removed slot.
+    // Shift later files into the removed slot. (뒤 파일을 앞으로 한 칸 이동)
     for (int i = index; i < file_count - 1; i++) {
         files[i] = files[i + 1];
     }
@@ -98,11 +101,12 @@ void write_file(char *args[100], char *cwd)
         return;
     }
 
+    // A missing newline means the input may be too long. (줄바꿈이 없으면 입력 길이 확인)
     if (strchr(content, '\n') == NULL) {
         int ch = getchar();
 
         if (ch != '\n' && ch != EOF) {
-            // Clear the rest of an overlong line.
+            // Discard the rest of the long input. (남은 긴 입력 버리기)
             while ((ch = getchar()) != '\n' && ch != EOF) {
             }
 
@@ -111,6 +115,7 @@ void write_file(char *args[100], char *cwd)
         }
     }
 
+    // Remove the newline before saving. (저장 전 줄바꿈 제거)
     content[strcspn(content, "\n")] = '\0';
     snprintf(file->content, sizeof(file->content), "%s", content);
 
@@ -140,6 +145,7 @@ void rename_file(char *args[100], char *cwd)
         return;
     }
 
+    // Exclude this file while checking duplicate names. (자기 자신은 중복 검사에서 제외)
     if (!make_numbered_name(name, args[2], cwd, index)) {
         printf("file: no space\n");
         return;
