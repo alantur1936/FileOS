@@ -11,6 +11,7 @@ int main(void)
     printf("> Command List: enter list\n");
     printf("> Version: 1.00\n");
 
+    // Keep accepting commands until the user exits. (사용자가 종료할 때까지 명령어 입력)
     while (1) {
         printf("FileOS:%s ", cwd);
 
@@ -19,6 +20,7 @@ int main(void)
             return 1;
         }
 
+        // Remove the newline added by fgets. (fgets가 넣은 줄바꿈 제거)
         user_input[strcspn(user_input, "\n")] = '\0';
 
         if (user_input[0] == '\0') {
