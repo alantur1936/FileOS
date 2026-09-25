@@ -1,9 +1,9 @@
 #ifndef FILE_H
 #define FILE_H
 
-#define FILE_NAME_MAX 64
-#define FILE_PATH_MAX 256
-#define FILE_CONTENT_MAX 1024
+#define FILE_NAME_MAX 64       // Maximum file name length (파일 이름 최대 길이)
+#define FILE_PATH_MAX 256      // Maximum directory path length (디렉터리 경로 최대 길이)
+#define FILE_CONTENT_MAX 1024  // Maximum file content length (파일 내용 최대 길이)
 
 typedef struct {
     char name[FILE_NAME_MAX];       // File name (파일 이름)
