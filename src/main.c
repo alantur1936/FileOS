@@ -7,7 +7,7 @@ int main(void)
     char cwd[256] = "/home"; // Maximum path length is 256. (경로 최대 길이는 256)
     char user_input[100];    // Maximum command length is 99 characters. (명령어 최대 길이는 99자)
 
-    // Restore saved files and directories at startup. (시작 시 저장된 파일·디렉터리 불러오기)
+    // Restore saved contents at startup. (시작 시 저장 내용 불러오기)
     load_filesystem();
 
     printf("FileOS:/home>\n");
