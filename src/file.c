@@ -14,7 +14,7 @@ static int find_file(const char *cwd, const char *name, int skip_index)
         }
     }
 
-    return -1;
+    return -1; // No matching file. (일치하는 파일 없음)
 }
 
 // Add (1), (2), ... when a name already exists. (이름이 겹치면 번호 붙이기)
@@ -22,7 +22,7 @@ static int make_numbered_name(char *name, const char *base,
                               const char *cwd, int skip_index)
 {
     for (int number = 0; number < MAX_FILES; number++) {
-        if (number == 0) {
+        if (number == 0) { // Keep the original name first. (먼저 원래 이름 사용)
             snprintf(name, FILE_NAME_MAX, "%s", base);
         } else {
             snprintf(name, FILE_NAME_MAX, "%s(%d)", base, number);
@@ -33,18 +33,20 @@ static int make_numbered_name(char *name, const char *base,
         }
     }
 
-    return 0;
+    return 0; // No available name remains. (사용 가능한 이름이 없음)
 }
 
 void create_file(char *args[100], char *cwd)
 {
     char name[FILE_NAME_MAX];
 
+    // Prevent writing past the file array. (파일 배열 범위 초과 방지)
     if (file_count >= MAX_FILES) {
         printf("file: no space\n");
         return;
     }
 
+    // Every numbered name is already in use. (번호를 붙인 모든 이름이 이미 사용 중)
     if (!make_numbered_name(name, args[1], cwd, -1)) {
         printf("file: no space\n");
         return;
@@ -65,6 +67,7 @@ void delete_file(char *args[100], char *cwd)
 {
     int index = find_file(cwd, args[1], -1);
 
+    // Stop before accessing an invalid array index. (잘못된 배열 인덱스 접근 방지)
     if (index == -1) {
         printf("file: not found\n");
         return;
@@ -86,6 +89,7 @@ void write_file(char *args[100], char *cwd)
 {
     int index = find_file(cwd, args[1], -1);
 
+    // Stop before accessing an invalid array index. (잘못된 배열 인덱스 접근 방지)
     if (index == -1) {
         printf("file: not found\n");
         return;
@@ -96,6 +100,7 @@ void write_file(char *args[100], char *cwd)
 
     printf("Content: ");
 
+    // Handle end-of-input or a read error. (입력 종료 또는 읽기 오류 처리)
     if (fgets(content, sizeof(content), stdin) == NULL) {
         printf("file: input failed\n");
         return;
@@ -126,6 +131,7 @@ void read_file(char *args[100], char *cwd)
 {
     int index = find_file(cwd, args[1], -1);
 
+    // Stop before accessing an invalid array index. (잘못된 배열 인덱스 접근 방지)
     if (index == -1) {
         printf("file: not found\n");
         return;
@@ -140,6 +146,7 @@ void rename_file(char *args[100], char *cwd)
     char name[FILE_NAME_MAX];
     int index = find_file(cwd, args[1], -1);
 
+    // Stop before accessing an invalid array index. (잘못된 배열 인덱스 접근 방지)
     if (index == -1) {
         printf("file: not found\n");
         return;
