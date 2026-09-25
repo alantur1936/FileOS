@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <string.h>
 
+// Find a directory at the current path. (현재 경로에서 디렉터리 찾기)
 static int find_directory(const char *cwd, const char *name, int skip_index)
 {
     for (int i = 0; i < directory_count; i++) {
@@ -16,6 +17,7 @@ static int find_directory(const char *cwd, const char *name, int skip_index)
     return -1;
 }
 
+// Add (1), (2), ... when a name already exists. (이름이 겹치면 번호 붙이기)
 static int make_numbered_directory_name(char *name, const char *base,
                                         const char *cwd, int skip_index)
 {
