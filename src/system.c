@@ -3,6 +3,7 @@
 #include "directory.h"
 #include "utility.h"
 
+// Validate the number of arguments after the command. (명령어 뒤 인자 개수 검사)
 int check_args(
     const char *command,
     int argc,
@@ -26,6 +27,7 @@ int check_args(
     return 1;
 }
 
+// Split a line into command and arguments. (입력 한 줄을 명령어와 인자로 분리)
 void process_command(char *user_input, char *cwd) {
     char *args[100];
     int arg_count = 0;
@@ -44,6 +46,7 @@ void process_command(char *user_input, char *cwd) {
     execute_command(arg_count, args, cwd);
 }
 
+// Route a command to its feature function. (명령어에 맞는 기능 함수 호출)
 void execute_command(int argc, char *args[100], char *cwd) {
     const char *command = args[0];
 
