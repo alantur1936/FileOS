@@ -15,6 +15,7 @@ void pwd_command(char *cwd)
 
 void list_command(void)
 {
+    // Print the command guide file. (명령어 안내 파일 출력)
     FILE *file = fopen("droc/command.txt", "r");
     int c;
 
