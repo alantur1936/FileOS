@@ -29,11 +29,6 @@ void cd_command(char *args[100], char *cwd)
 {
     const char *target = args[1];
 
-    // "." keeps the current path unchanged. ("."은 현재 경로 유지)
-    if (strcmp(target, ".") == 0) {
-        return;
-    }
-
     // "~" returns to the home directory. ("~"는 홈 디렉터리로 이동)
     if (strcmp(target, "~") == 0) {
         snprintf(cwd, FILE_PATH_MAX, "%s", "/home");
