@@ -1,5 +1,6 @@
 #include "utility.h"
 #include "storage.h"
+#include "color.h"
 
 void ls_command(char *args[100], char *cwd)
 {
@@ -14,14 +15,14 @@ void ls_command(char *args[100], char *cwd)
 
     for (int i = 0; i < directory_count; i++) {
         if (strcmp(directories[i].parent_path, cwd) == 0) {
-            printf("%s\n", directories[i].name);
+            printf(COLOR_DIRECTORY "%s\n" COLOR_RESET, directories[i].name);
             entry_count++;
         }
     }
 
     // Report an empty current directory. (현재 디렉터리가 비어 있음을 알림)
     if (entry_count == 0) {
-        printf("ls: empty\n");
+        printf(COLOR_ERROR "ls: empty\n" COLOR_RESET);
     }
 }
 
@@ -68,7 +69,7 @@ void cd_command(char *args[100], char *cwd)
             // Prevent a child path longer than the current-path buffer. (현재 경로 저장 공간보다 긴 하위 경로 방지)
             if (strcmp(cwd, "/") == 0) {
                 if (snprintf(path, sizeof(path), "/%s", target) >= (int)sizeof(path)) {
-                    printf("cd: path too long\n");
+                    printf(COLOR_ERROR "cd: path too long\n" COLOR_RESET);
                     return;
                 }
             } else if (snprintf(path, sizeof(path), "%s/%s", cwd, target) >= (int)sizeof(path)) {
@@ -82,7 +83,7 @@ void cd_command(char *args[100], char *cwd)
     }
 
     // Do not change paths when the target does not exist. (대상 디렉터리가 없으면 경로 변경 방지)
-    printf("cd: directory not found\n");
+    printf(COLOR_ERROR "cd: directory not found\n" COLOR_RESET);
 }
 
 void pwd_command(char *cwd)
@@ -98,7 +99,7 @@ void list_command(void)
 
     // Stop if the guide file cannot be opened. (안내 파일을 열 수 없으면 중단)
     if (file == NULL) {
-        printf("list: command guide not found\n");
+        printf(COLOR_ERROR "list: command guide not found\n" COLOR_RESET);
         return;
     }
 
@@ -107,7 +108,7 @@ void list_command(void)
 
     // Report a read failure separately from normal EOF. (정상 파일 끝과 읽기 오류 구분)
     if (ferror(file)) {
-        printf("list: failed to read command guide\n");
+        printf(COLOR_ERROR "list: failed to read command guide\n" COLOR_RESET);
     }
 
     fclose(file);
