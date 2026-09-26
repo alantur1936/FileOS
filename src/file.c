@@ -1,5 +1,6 @@
 #include "file.h"
 #include "storage.h"
+#include "color.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -42,13 +43,13 @@ void create_file(char *args[100], char *cwd)
 
     // Prevent writing past the file array. (파일 배열 범위 초과 방지)
     if (file_count >= MAX_FILES) {
-        printf("file: no space\n");
+        printf(COLOR_ERROR "file: no space\n" COLOR_RESET);
         return;
     }
 
     // Every numbered name is already in use. (번호를 붙인 모든 이름이 이미 사용 중)
     if (!make_numbered_name(name, args[1], cwd, -1)) {
-        printf("file: no space\n");
+        printf(COLOR_ERROR "file: no space\n" COLOR_RESET);
         return;
     }
 
@@ -60,7 +61,7 @@ void create_file(char *args[100], char *cwd)
     file->content[0] = '\0';
 
     file_count++;
-    printf("file created: %s/%s\n", file->path, file->name);
+    printf(COLOR_SUCCESS "file created: %s/%s\n" COLOR_RESET, file->path, file->name);
 }
 
 void delete_file(char *args[100], char *cwd)
@@ -69,11 +70,11 @@ void delete_file(char *args[100], char *cwd)
 
     // Stop before accessing an invalid array index. (잘못된 배열 인덱스 접근 방지)
     if (index == -1) {
-        printf("file: not found\n");
+        printf(COLOR_ERROR "file: not found\n" COLOR_RESET);
         return;
     }
 
-    printf("file deleted: %s/%s\n",
+    printf(COLOR_SUCCESS "file deleted: %s/%s\n" COLOR_RESET,
            files[index].path,
            files[index].name);
 
@@ -91,18 +92,18 @@ void write_file(char *args[100], char *cwd)
 
     // Stop before accessing an invalid array index. (잘못된 배열 인덱스 접근 방지)
     if (index == -1) {
-        printf("file: not found\n");
+        printf(COLOR_ERROR "file: not found\n" COLOR_RESET);
         return;
     }
 
     File *file = &files[index];
     char content[FILE_CONTENT_MAX];
 
-    printf("Content: ");
+    printf(COLOR_PROMPT "Content: " COLOR_RESET);
 
     // Handle end-of-input or a read error. (입력 종료 또는 읽기 오류 처리)
     if (fgets(content, sizeof(content), stdin) == NULL) {
-        printf("file: input failed\n");
+        printf(COLOR_ERROR "file: input failed\n" COLOR_RESET);
         return;
     }
 
@@ -115,7 +116,7 @@ void write_file(char *args[100], char *cwd)
             while ((ch = getchar()) != '\n' && ch != EOF) {
             }
 
-            printf("file: content too long\n");
+            printf(COLOR_ERROR "file: content too long\n" COLOR_RESET);
             return;
         }
     }
@@ -124,7 +125,7 @@ void write_file(char *args[100], char *cwd)
     content[strcspn(content, "\n")] = '\0';
     snprintf(file->content, sizeof(file->content), "%s", content);
 
-    printf("file written: %s/%s\n", file->path, file->name);
+    printf(COLOR_SUCCESS "file written: %s/%s\n" COLOR_RESET, file->path, file->name);
 }
 
 void read_file(char *args[100], char *cwd)
@@ -133,7 +134,7 @@ void read_file(char *args[100], char *cwd)
 
     // Stop before accessing an invalid array index. (잘못된 배열 인덱스 접근 방지)
     if (index == -1) {
-        printf("file: not found\n");
+        printf(COLOR_ERROR "file: not found\n" COLOR_RESET);
         return;
     }
 
@@ -148,18 +149,18 @@ void rename_file(char *args[100], char *cwd)
 
     // Stop before accessing an invalid array index. (잘못된 배열 인덱스 접근 방지)
     if (index == -1) {
-        printf("file: not found\n");
+        printf(COLOR_ERROR "file: not found\n" COLOR_RESET);
         return;
     }
 
     // Exclude this file while checking duplicate names. (자기 자신은 중복 검사에서 제외)
     if (!make_numbered_name(name, args[2], cwd, index)) {
-        printf("file: no space\n");
+        printf(COLOR_ERROR "file: no space\n" COLOR_RESET);
         return;
     }
 
     snprintf(files[index].name, sizeof(files[index].name), "%s", name);
-    printf("file renamed: %s/%s\n",
+    printf(COLOR_SUCCESS "file renamed: %s/%s\n" COLOR_RESET,
            files[index].path,
            files[index].name);
 }
