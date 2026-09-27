@@ -1,5 +1,4 @@
 #include "storage.h"
-#include "color.h"
 #include <stdio.h>
 
 #define STORAGE_FILE "fileos.dat"
@@ -17,7 +16,7 @@ void save_filesystem(void)
 
     // Stop when the save file cannot be opened. (저장 파일을 열 수 없으면 중단)
     if (file == NULL) {
-        printf(COLOR_ERROR "storage: save failed\n" COLOR_RESET);
+        printf("storage: save failed\n");
         return;
     }
 
@@ -26,7 +25,7 @@ void save_filesystem(void)
         fwrite(files, sizeof(File), file_count, file) != file_count ||
         fwrite(&directory_count, sizeof(directory_count), 1, file) != 1 ||
         fwrite(directories, sizeof(Directory), directory_count, file) != directory_count) {
-        printf(COLOR_ERROR "storage: save failed\n" COLOR_RESET);
+        printf("storage: save failed\n");
     }
 
     fclose(file);
@@ -47,13 +46,13 @@ void load_filesystem(void)
     if (fread(&loaded_file_count, sizeof(loaded_file_count), 1, file) != 1 ||
         loaded_file_count < 0 ||
         loaded_file_count > MAX_FILES) {
-        printf(COLOR_ERROR "storage: load failed\n" COLOR_RESET);
+        printf("storage: load failed\n");
         fclose(file);
         return;
     }
 
     if (fread(files, sizeof(File), loaded_file_count, file) != loaded_file_count) {
-        printf(COLOR_ERROR "storage: load failed\n" COLOR_RESET);
+        printf("storage: load failed\n");
         fclose(file);
         return;
     }
@@ -61,14 +60,14 @@ void load_filesystem(void)
     if (fread(&loaded_directory_count, sizeof(loaded_directory_count), 1, file) != 1 ||
         loaded_directory_count < 0 ||
         loaded_directory_count > MAX_DIRECTORIES) {
-        printf(COLOR_ERROR "storage: load failed\n" COLOR_RESET);
+        printf("storage: load failed\n");
         fclose(file);
         return;
     }
 
     if (fread(directories, sizeof(Directory), loaded_directory_count, file)
         != loaded_directory_count) {
-        printf(COLOR_ERROR "storage: load failed\n" COLOR_RESET);
+        printf("storage: load failed\n");
         fclose(file);
         return;
     }
