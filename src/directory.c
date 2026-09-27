@@ -1,6 +1,5 @@
 #include "directory.h"
 #include "storage.h"
-#include "color.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -43,13 +42,13 @@ void create_dir(char *args[100], char *cwd)
 
     // Prevent writing past the directory array. (디렉터리 배열 범위 초과 방지)
     if (directory_count >= MAX_DIRECTORIES) {
-        printf(COLOR_ERROR "directory: no space\n" COLOR_RESET);
+        printf("directory: no space\n");
         return;
     }
 
     // Every numbered name is already in use. (번호를 붙인 모든 이름이 이미 사용 중)
     if (!make_numbered_directory_name(name, args[1], cwd, -1)) {
-        printf(COLOR_ERROR "directory: no space\n" COLOR_RESET);
+        printf("directory: no space\n");
         return;
     }
 
@@ -60,7 +59,7 @@ void create_dir(char *args[100], char *cwd)
     snprintf(directory->parent_path, sizeof(directory->parent_path), "%s", cwd);
 
     directory_count++;
-    printf(COLOR_SUCCESS "directory created: " COLOR_DIRECTORY "%s/%s\n" COLOR_RESET,
+    printf("directory created: %s/%s\n",
            directory->parent_path,
            directory->name);
 }
@@ -71,11 +70,11 @@ void delete_dir(char *args[100], char *cwd)
 
     // Stop before accessing an invalid array index. (잘못된 배열 인덱스 접근 방지)
     if (index == -1) {
-        printf(COLOR_ERROR "directory: not found\n" COLOR_RESET);
+        printf("directory: not found\n");
         return;
     }
 
-    printf(COLOR_SUCCESS "directory deleted: " COLOR_DIRECTORY "%s/%s\n" COLOR_RESET,
+    printf("directory deleted: %s/%s\n",
            directories[index].parent_path,
            directories[index].name);
 
@@ -94,18 +93,18 @@ void rename_dir(char *args[100], char *cwd)
 
     // Stop before accessing an invalid array index. (잘못된 배열 인덱스 접근 방지)
     if (index == -1) {
-        printf(COLOR_ERROR "directory: not found\n" COLOR_RESET);
+        printf("directory: not found\n");
         return;
     }
 
     // Exclude this directory while checking duplicate names. (자기 자신은 중복 검사에서 제외)
     if (!make_numbered_directory_name(name, args[2], cwd, index)) {
-        printf(COLOR_ERROR "directory: no space\n" COLOR_RESET);
+        printf("directory: no space\n");
         return;
     }
 
     snprintf(directories[index].name, sizeof(directories[index].name), "%s", name);
-    printf(COLOR_SUCCESS "directory renamed: " COLOR_DIRECTORY "%s/%s\n" COLOR_RESET,
+    printf("directory renamed: %s/%s\n",
            directories[index].parent_path,
            directories[index].name);
 }
