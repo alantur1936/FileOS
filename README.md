@@ -10,6 +10,30 @@ The virtual filesystem is stored in memory while the program runs and is saved t
 
 More commands and features will be added in future updates.
 
+## Installation
+
+1. Open the repository's **Actions** tab.
+2. Select the latest **Build FileOS** workflow run.
+3. Download the artifact for your operating system:
+   - **FileOS-Windows**
+   - **FileOS-Linux**
+   - **FileOS-macOS**
+4. Extract the downloaded ZIP file. Keep the `droc` folder beside the executable.
+
+Run FileOS with the following command:
+
+```text
+Windows: .\fileos.exe
+Linux:   ./fileos
+macOS:   ./fileos
+```
+
+On Linux or macOS, grant execution permission first if needed:
+
+```bash
+chmod +x fileos
+```
+
 ## Structure
 
 ```text
