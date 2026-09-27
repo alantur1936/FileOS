@@ -3,7 +3,6 @@
 #include "directory.h"
 #include "storage.h"
 #include "utility.h"
-#include "color.h"
 
 // Validate the number of arguments after the command. (명령어 뒤 인자 개수 검사)
 int check_args(
@@ -15,14 +14,14 @@ int check_args(
     int argument_count = argc - 1; // Exclude the command itself. (명령어 자체는 제외)
 
     if (argument_count < min_args) {
-        printf(COLOR_ERROR "%s: too few arguments (min: %d)\n" COLOR_RESET,
+        printf("%s: too few arguments (min: %d)\n",
                command, min_args);
         return 0;
     }
 
     // -1 means there is no upper argument limit. (-1은 최대 인자 수 제한 없음)
     if (max_args != -1 && argument_count > max_args) {
-        printf(COLOR_ERROR "%s: too many arguments (max: %d)\n" COLOR_RESET,
+        printf("%s: too many arguments (max: %d)\n",
                command, max_args);
         return 0;
     }
@@ -111,7 +110,7 @@ void execute_command(int argc, char *args[100], char *cwd) {
         list_command();
     }
     else {
-        printf(COLOR_ERROR "%s: command not found\n" COLOR_RESET, command);
+        printf("%s: command not found\n", command);
     }
 
     if (should_save) {
