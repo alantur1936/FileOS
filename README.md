@@ -8,3 +8,27 @@ This project is still under development. More commands and features will be adde
 
 ## Structure
 
+```
+FileOS/
+├── .github/
+│   ├── .gitkeep
+│   └── workflows/
+│       └── build.yml
+├── droc/
+│   ├── command.json 
+│   └── command.txt <- Command Types
+├── include/
+│   ├── directory.h
+│   ├── file.h
+│   ├── storage.h
+│   ├── system.h
+│   └── utility.h
+├── src/
+│   ├── directory.c <- Command Reference
+│   ├── file.c <- Command Reference
+│   ├── main.c
+│   ├── storage.c <- Save/Load
+│   ├── system.c <- User_Input Handling
+│   └── utility.c <- Command Reference
+└── README.md
+```
