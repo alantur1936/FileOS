@@ -20,14 +20,6 @@ More commands and features will be added in future updates.
    - **FileOS-macOS**
 4. Extract the downloaded ZIP file. Keep the `droc` folder beside the executable.
 
-Run FileOS with the following command:
-
-```text
-Windows: .\fileos.exe
-Linux:   ./fileos
-macOS:   ./fileos
-```
-
 On Linux or macOS, grant execution permission first if needed:
 
 ```bash
