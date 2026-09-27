@@ -1,5 +1,6 @@
 #include "system.h"
 #include "storage.h"
+#include "color.h"
 #include <string.h>
 
 int main(void)
@@ -10,18 +11,18 @@ int main(void)
     // Restore saved contents at startup. (시작 시 저장 내용 불러오기)
     load_filesystem();
 
-    printf("FileOS:/home>\n");
+    printf(COLOR_SUCCESS "FileOS:" COLOR_DIRECTORY "/home" COLOR_RESET " >\n");
     printf("> Exit: enter x\n");
     printf("> Command List: enter list\n");
     printf("> Version: 1.00\n");
 
     // Keep accepting commands until the user exits. (사용자가 종료할 때까지 명령어 입력)
     while (1) {
-        printf("FileOS:%s ", cwd);
+        printf(COLOR_SUCCESS "FileOS:" COLOR_DIRECTORY "%s" COLOR_RESET " > ", cwd);
 
         // Handle end-of-input or a read error. (입력 종료 또는 읽기 오류 처리)
         if (fgets(user_input, sizeof(user_input), stdin) == NULL) {
-            printf("Input failed.\n");
+            printf(COLOR_ERROR "input: failed\n" COLOR_RESET);
             return 1;
         }
 
@@ -35,11 +36,11 @@ int main(void)
         if (strcmp(user_input, "x") == 0) {
             char exit_input[10]; // Enough for a short exit reply. (짧은 종료 응답용 공간)
 
-            printf("Exit FileOS?(y/n): ");
+            printf(COLOR_PROMPT "Exit FileOS? (y/n): " COLOR_RESET);
 
             // Handle end-of-input or a read error. (입력 종료 또는 읽기 오류 처리)
             if (fgets(exit_input, sizeof(exit_input), stdin) == NULL) {
-                printf("Input failed.\n");
+                printf(COLOR_ERROR "input: failed\n" COLOR_RESET);
                 return 1;
             }
 
@@ -48,7 +49,7 @@ int main(void)
             } else if (exit_input[0] == 'n') {
                 continue;
             } else {
-                printf("Enter 'y' or 'n'\n");
+                printf(COLOR_ERROR "exit: enter y or n\n" COLOR_RESET);
                 continue;
             }
         }
